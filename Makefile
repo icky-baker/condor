@@ -147,6 +147,14 @@ bump:
 	poetry version $(args)
 	$(python) scripts/bump_versions.py
 
-.PHONY: polling
-polling:
-	$(python) -m $(project_source_dir)
+.PHONY: runserver
+runserver:
+	$(python) $(project_source_dir)/manage.py runserver
+
+.PHONY: makemigrations
+makemigrations:
+	$(python) $(project_source_dir)/manage.py makemigrations
+
+.PHONY: migrate
+migrate:
+	$(python) $(project_source_dir)/manage.py migrate
