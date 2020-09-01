@@ -1,3 +1,5 @@
-from . import views  # noqa
+from django.urls import include, path
 
-urlpatterns = []
+from . import views
+
+urlpatterns = [path("", views.index, name="index")]

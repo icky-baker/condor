@@ -1,6 +1,8 @@
 [flake8]
 max-line-length = 119
 ignore =
+    # model imported but not used
+    F401,
     # line length
     E501,
     # missing whitespace after ?,?, ?;?, or ?:?
