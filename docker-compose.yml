@@ -1,0 +1,9 @@
+version: '3.3'
+
+services:
+  web:
+    image: "birdi7/project1_web"
+    build: .
+    ports:
+      - 80:80
+    command: make prodrunserver

@@ -151,6 +151,10 @@ bump:
 runserver:
 	$(python) $(project_source_dir)/manage.py runserver
 
+.PHONY: prodrunserver
+prodrunserver:
+	$(python) $(project_source_dir)/manage.py runserver 0.0.0.0:80
+
 .PHONY: makemigrations
 makemigrations:
 	$(python) $(project_source_dir)/manage.py makemigrations

@@ -7,7 +7,6 @@ RUN python -m pip install --upgrade pip poetry==1.0
 RUN poetry install --no-dev
 
 COPY . /app/
-COPY .env /app/
 
-# FIXME:
-CMD ["make", "polling"]
+EXPOSE 80
+CMD ["make", "runserver"]
