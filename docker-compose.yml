@@ -7,3 +7,5 @@ services:
     ports:
       - 80:80
     command: make prodrunserver
+    deploy:
+      replicas: 10

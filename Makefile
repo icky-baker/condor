@@ -162,3 +162,7 @@ makemigrations:
 .PHONY: migrate
 migrate:
 	$(python) $(project_source_dir)/manage.py migrate
+
+.PHONY: deploy
+deploy:
+	./swarm_deploy.sh
