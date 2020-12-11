@@ -9,15 +9,26 @@
   loop:
     - python-pip 
     - python-dev
-    - python3-pip
-    - python3-dev
+    - python3.8
+    - python3.8-pip
+    - python3.8-dev
     - python-psycopg2
   
-- name: Checkout source code
-  git:
-    repo: 'https://github.com/icky-baker/condor/'
-    dest: /srv/app
-    version: "{{ lookup('env', 'VERSION') }}" # NOTE: this env is linux env var
+#- name: Checkout source code
+#  git:
+#    repo: 'https://github.com/icky-baker/condor/'
+#    dest: "{{ project_path }}"
+##    version: "{{ lookup('env', 'VERSION') }}" # NOTE: this env is linux env var
+#    version: master
+#
+#- name: Install python dependencies
+#  pip:
+#    requirements: /src/app/requirements.txt 
+
+- name: Migrate database
+  community.general.django_manage: 
+    command: "migrate"
+    project_path: "{{ django_dir }}"
 
 # env for DB host
 # pip install

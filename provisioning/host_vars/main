@@ -7,3 +7,5 @@ db_user: sna
 db_name: condor
 db_password: snapass
 # db_host: ...
+project_path: /src/app
+django_dir: /src/app/condor

@@ -103,3 +103,11 @@ dev_run_postgres:
 	sleep 2;
 	# FIXME: doesn't work. insert container id instead of `docker ps -lq`
 	docker exec -it $(docker ps -l -q) psql -Upostgres -c "create database condor;";
+
+.PHONY: deploy
+deploy:
+	ansible-playbook provisioning/site.yml -i provisioning/hosts.yml --extra-vars "ansible_sudo_pass=serv"
+	
+.PHONY: deployv
+deployv:
+	ansible-playbook provisioning/site.yml -i provisioning/hosts.yml --extra-vars "ansible_sudo_pass=serv" -vvv
