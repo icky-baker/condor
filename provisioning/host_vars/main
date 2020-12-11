@@ -3,9 +3,9 @@
     
 ansible_python_interpreter: /usr/bin/python3
 
-db_user: sna
+db_user: condor
 db_name: condor
-db_password: snapass
+db_password: condor
 # db_host: ...
 project_path: /src/app
 django_dir: /src/app/condor
