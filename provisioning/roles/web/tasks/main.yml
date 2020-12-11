@@ -29,8 +29,3 @@
     command: "migrate"
     project_path: "{{ django_dir }}"
 
-# env for DB host
-# pip install
-# migrate
-# wait db
-# run

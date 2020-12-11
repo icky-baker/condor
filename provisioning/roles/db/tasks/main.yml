@@ -43,8 +43,11 @@
     template: template0
 
 - name: Create condor user
+  become: yes
+  become_user: postgres
   community.general.postgresql_user:
-    db: "{{ db_user }} "
-    name: "{{ db_name }} "
-    password: "{{ db_password }} "
-    priv: "CONNECT/products:ALL"
+    db: "{{ db_name }}"
+    name: "{{ db_user }}"
+    password: "{{ db_password }}"
+    priv: "ALL"
+    expires: infinity
