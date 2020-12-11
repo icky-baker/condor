@@ -4,8 +4,7 @@
 .DEFAULT_GOAL := help
 
 base_python := python3
-py := poetry run
-python := $(py) python
+python := python
 project_source_dir := condor
 
 reports_dir := reports
@@ -81,7 +80,7 @@ test-coverage-view:
 	python -c "import webbrowser; webbrowser.open('file://$(shell pwd)/reports/coverage/index.html')"
 
 .PHONY: runserver
-runserver:
+run:
 	$(python) $(project_source_dir)/manage.py runserver
 
 .PHONY: prodrunserver
