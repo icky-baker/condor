@@ -17,6 +17,7 @@ reports_dir := reports
 .PHONY: install
 install:
 	$(base_python) -m pip install -r requirements.txt
+	ansible-galaxy collection install community.general
 
 .PHONY: clean
 clean:
@@ -95,3 +96,10 @@ makemigrations:
 .PHONY: migrate
 migrate:
 	$(python) $(project_source_dir)/manage.py migrate
+
+.PHONY: dev_run_postgres
+dev_run_postgres:
+	docker run -p 5432:5432 -d -e POSTGRES_PASSWORD=postgres postgres;
+	sleep 2;
+	# FIXME: doesn't work. insert container id instead of `docker ps -lq`
+	docker exec -it $(docker ps -l -q) psql -Upostgres -c "create database condor;";

@@ -1,0 +1,26 @@
+---
+# Configure postgres
+#
+- name: Install python packages
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  loop:
+    - python-pip 
+    - python-dev
+    - python3-pip
+    - python3-dev
+    - python-psycopg2
+  
+- name: Checkout source code
+  git:
+    repo: 'https://github.com/icky-baker/condor/'
+    dest: /srv/app
+    version: "{{ lookup('env', 'VERSION') }}" # NOTE: this env is linux env var
+
+# env for DB host
+# pip install
+# migrate
+# wait db
+# run

@@ -2,6 +2,8 @@
 # Variables listed here are applicable to "setup" role
     
 ansible_python_interpreter: /usr/bin/python3
-    
-remote_user: ubuntu
-docker_group: docker
+
+db_user: sna
+db_name: condor
+db_password: snapass
+# db_host: ...

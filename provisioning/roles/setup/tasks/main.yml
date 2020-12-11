@@ -2,15 +2,23 @@
 # This playbook contains all actions that will be run on "local" host.
 
 # sudo apt-get update
+# TODO: uncomment
 - name: Update apt packages
   apt:
     update_cache: yes
   tags:
     - system
 
-# Import docker tasks
-- name: Import docker tasks
-  include_tasks: docker.yml
+- name: Install main packages
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  loop:
+    - vim
+    - net-tools
+    - curl
+
 
 # sudo apt-get autoclean
 - name: Remove useless apt packages from the cache

@@ -2,8 +2,14 @@
 # This playbook sets up whole stack.
 
 - name: Configurations to "remote" host
-  hosts: remote
-  remote_user: ubuntu # Remote user
+  hosts: test
+  remote_user: serv # Remote user
+#  become_user: postgres
   become: yes
+  vars_files:
+    - host_vars/main
+    
   roles:
-      - setup
+#      - setup
+#      - db
+      - web
