@@ -18,6 +18,7 @@
     - vim
     - net-tools
     - curl
+    - supervisor
 
 
 # sudo apt-get autoclean

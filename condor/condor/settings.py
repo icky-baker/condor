@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost']
 
+STATIC_ROOT = BASE_DIR / "static"
 
 # Application definition
 

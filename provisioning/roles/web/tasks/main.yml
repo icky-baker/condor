@@ -24,8 +24,27 @@
   pip:
     requirements: /src/app/requirements.txt 
 
+- name: Collectstatic
+  community.general.django_manage: 
+    command: "collectstatic"
+    project_path: "{{ django_dir }}"
+    
 - name: Migrate database
   community.general.django_manage: 
     command: "migrate"
     project_path: "{{ django_dir }}"
 
+- name: Copy supervisor config
+  template:
+    src: templates/condor.conf
+    dest: /etc/supervisor/conf.d/condor.conf
+  
+- name: Make sure condor service exists in supervisor
+  community.general.supervisorctl:
+    name: condor
+    state: present
+        
+- name: Restart condor service
+  community.general.supervisorctl:
+    name: condor
+    state: restarted
