@@ -27,7 +27,7 @@
     - python-dev
 
 - name: Ensure the PostgreSQL service is running
-  service: 
+  service:
     name: postgresql
     state: started
     enabled: yes

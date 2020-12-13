@@ -26,7 +26,7 @@ SECRET_KEY = "%$w31)dwxp1lv$uno+1r7-msg*=mwif_($0=ma&bttpndla#($"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ["localhost"]
 
 STATIC_ROOT = BASE_DIR / "static"
 
@@ -79,13 +79,13 @@ WSGI_APPLICATION = "condor.wsgi.application"
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'condor',
-        'USER': 'condor',
-        'PASSWORD': 'condor',
-        'HOST': 'localhost',
-        'PORT': '',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "condor",
+        "USER": "condor",
+        "PASSWORD": "condor",
+        "HOST": "localhost",
+        "PORT": "",
     }
 }
 

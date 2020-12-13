@@ -8,8 +8,8 @@
   become: yes
   vars_files:
     - host_vars/main
-    
+
   roles:
-      - setup
-      - db
+#      - setup
+#      - db
       - web

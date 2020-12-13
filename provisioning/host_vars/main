@@ -1,6 +1,6 @@
 ---
 # Variables listed here are applicable to "setup" role
-    
+
 ansible_python_interpreter: /usr/bin/python3
 
 db_user: condor
