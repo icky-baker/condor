@@ -1,0 +1,27 @@
+---
+
+- name: Create postgres backup directory
+  file:
+    path: '{{ item }}'
+    state: directory
+
+  loop:
+    - "{{src_path}}/etc/postgresql/10/"
+    - "{{src_path}}/var/lib/postgresql/10/"
+
+
+- name: Soft link to postgres config folder
+  file:
+    src: "/etc/postgresql/10/main"
+    dest: "{{src_path}}/etc/postgresql/10/main"
+    state: link
+
+- name: Soft link to postgres data folder
+  become: yes
+  become_user: postgres
+  file:
+    src: "/var/lib/postgresql/10/main"
+    dest: "{{src_path}}/var/lib/postgresql/10/main"
+    state: link
+    owner: postgres
+    group: postgres

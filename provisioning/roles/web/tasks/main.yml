@@ -18,6 +18,11 @@
     - python-psycopg2
   tags: web
 
+- name: Remove directory with source code
+  file:
+    dest: "{{ project_path }}"
+    state: absent
+
 - name: Checkout source code
   git:
     repo: 'https://github.com/icky-baker/condor/'

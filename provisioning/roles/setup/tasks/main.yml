@@ -1,7 +1,7 @@
 ---
 # This playbook contains all actions that will be run on "local" host.
 
-# sudo apt-get update
+# fix issue with date difference inside VM
 - name: Install ntp
   apt:
     name: ntp
@@ -26,7 +26,7 @@
     - net-tools
     - curl
     - supervisor
-    - ntp
+    - tree
   tags:
     - setup
 

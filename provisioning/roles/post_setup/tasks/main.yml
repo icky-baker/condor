@@ -1,0 +1,26 @@
+---
+
+- name: Check postgres data folder exist
+  stat:
+    path: "/etc/postgresql/10/main"
+  register: st
+
+- include: ./postgres.yaml
+  when: st.stat.exists
+
+- name: Create supervisor backup directory
+  file:
+    path: '{{ item }}'
+    state: directory
+
+  loop:
+    - "{{src_path}}/supervisor/"
+
+- name: Soft link to supervisor config
+  file:
+    src: "/etc/supervisor/conf.d/condor.conf"
+    dest: "{{src_path}}/supervisor/condor.conf"
+    state: link
+
+# TODO: add jenkins here
+# TODO: add HAP configs here

@@ -7,6 +7,7 @@ db_user: condor
 db_name: condor
 db_password: condor
 # db_host: ...
+src_path: /src
 project_path: /src/app
 django_dir: /src/app/condor
 ip1: 192.168.0.111

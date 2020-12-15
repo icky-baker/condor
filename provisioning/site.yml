@@ -35,3 +35,16 @@
 
   roles:
     - web
+
+- name: Post configuration
+  hosts:
+    - server1
+    - server2
+  become: yes
+  vars_files:
+    - host_vars/main
+
+  roles:
+    - post_setup
+
+  tags: tmp
