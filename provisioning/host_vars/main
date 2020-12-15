@@ -9,3 +9,7 @@ db_password: condor
 # db_host: ...
 project_path: /src/app
 django_dir: /src/app/condor
+ip1: 192.168.0.111
+ip2: 192.168.0.149
+
+db_host: '{{ ip1 }}'

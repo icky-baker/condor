@@ -1,6 +1,11 @@
 ---
 # Configure postgres
 #
+- name: Print database location
+  debug: msg="{{ db_host }}"
+
+  tags: web
+
 - name: Install python packages
   apt:
     name: "{{ item }}"
@@ -12,6 +17,7 @@
     - python3-pip
     - python3-dev
     - python-psycopg2
+  tags: web
 
 - name: Checkout source code
   git:
@@ -19,37 +25,57 @@
     dest: "{{ project_path }}"
 #    version: "{{ lookup('env', 'VERSION') }}" # NOTE: this env is linux env var
     version: master
+  tags: web
 
 - name: Install python dependencies
   pip:
     requirements: /src/app/requirements.txt
+  tags: web
 
 - name: Collectstatic
   community.general.django_manage:
     command: "collectstatic"
     project_path: "{{ django_dir }}"
+  tags: web
+
+- name: Check database connection
+  community.general.django_manage:
+    command: "wait_for_db"
+    project_path: "{{ django_dir }}"
+
+  register: wait_for_db
+  tags: web
+
+- name: Show output of checking database connection
+  debug:
+    msg: "DB connection: {{wait_for_db.stdout}}"
 
 - name: Migrate database
   community.general.django_manage:
     command: "migrate"
     project_path: "{{ django_dir }}"
+  tags: web
 
 - name: Copy supervisor config
   template:
     src: templates/condor.conf
     dest: /etc/supervisor/conf.d/condor.conf
+  tags: web
 
 - name: Create directory for condor logs
   file:
     path: /var/log/condor
     state: directory
+  tags: web
 
 - name: Make sure condor service exists in supervisor
   community.general.supervisorctl:
     name: web:condor
     state: present
+  tags: web
 
 - name: Restart condor service
   community.general.supervisorctl:
     name: web:condor
     state: restarted
+  tags: web

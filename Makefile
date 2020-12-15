@@ -111,3 +111,7 @@ deploy:
 .PHONY: deployv
 deployv:
 	ansible-playbook provisioning/site.yml -i provisioning/hosts.yml --extra-vars "ansible_sudo_pass=serv" -vvv
+
+.PHONY: deploy_wo_setup
+deploy_wo_setup:
+	ansible-playbook provisioning/site.yml -i provisioning/hosts.yml --extra-vars "ansible_sudo_pass=serv" --skip-tags setup

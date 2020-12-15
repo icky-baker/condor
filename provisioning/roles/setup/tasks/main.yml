@@ -7,7 +7,7 @@
   apt:
     update_cache: yes
   tags:
-    - system
+    - setup
 
 - name: Install main packages
   apt:
@@ -19,18 +19,19 @@
     - net-tools
     - curl
     - supervisor
-
+  tags:
+    - setup
 
 # sudo apt-get autoclean
 - name: Remove useless apt packages from the cache
   apt:
     autoclean: yes
   tags:
-    - system
+    - setup
 
 # sudo apt-get autoremove
 - name: Remove dependencies that are no longer required
   apt:
     autoremove: yes
   tags:
-    - system
+    - setup

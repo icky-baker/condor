@@ -1,15 +1,35 @@
 ---
 # This playbook sets up whole stack.
 
-- name: Configurations to "remote" host
-  hosts: test
-  remote_user: serv # Remote user
-#  become_user: postgres
+- name: Setup configuration
+  hosts:
+    - server1
+    - server2
   become: yes
   vars_files:
     - host_vars/main
 
   roles:
-#      - setup
-#      - db
-      - web
+      - setup
+
+- name: Database configuration
+  hosts: server1
+  become: yes
+  vars_files:
+    - host_vars/main
+
+  roles:
+    - db
+
+- name: Web configuration
+  hosts:
+    - server1
+    - server2
+  become: yes
+  vars_files:
+    - host_vars/main
+  environment:
+    db_host: '{{ db_host }}'
+
+  roles:
+    - web
