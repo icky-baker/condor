@@ -19,7 +19,7 @@ class Command(BaseCommand):
                 db_conn = True
                 if time.time() - start_time > 7:
                     self.stdout.write("Database unavailable, giving up...")
-
+                    break
             except OperationalError:
                 self.stdout.write("Database unavailable, waiting 1 second...")
                 time.sleep(1)
