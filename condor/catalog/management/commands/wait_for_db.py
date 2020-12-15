@@ -12,10 +12,14 @@ class Command(BaseCommand):
         """Handle the command"""
         self.stdout.write("Waiting for database...")
         db_conn = None
+        start_time = time.time()
         while not db_conn:
             try:
                 connection.ensure_connection()
                 db_conn = True
+                if time.time() - start_time > 7:
+                    self.stdout.write("Database unavailable, giving up...")
+
             except OperationalError:
                 self.stdout.write("Database unavailable, waiting 1 second...")
                 time.sleep(1)
