@@ -2,7 +2,14 @@
 # This playbook contains all actions that will be run on "local" host.
 
 # sudo apt-get update
-# TODO: uncomment
+- name: Install ntp
+  apt:
+    name: ntp
+    state: present
+  become: yes
+  tags:
+    - setup
+
 - name: Update apt packages
   apt:
     update_cache: yes
@@ -19,6 +26,7 @@
     - net-tools
     - curl
     - supervisor
+    - ntp
   tags:
     - setup
 

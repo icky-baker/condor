@@ -28,6 +28,27 @@
     - python-dev
   tags: db
 
+- name: Set listen_addresses to *
+  lineinfile: dest=/etc/postgresql/10/main/postgresql.conf
+    regexp="listen_addresses =" line="listen_addresses = '*'" state=present
+
+  become: yes
+  tags: db
+  notify: restart db
+
+- name: Set max_connection.
+  lineinfile: dest=/etc/postgresql/10/main/postgresql.conf
+    regexp="max_connections =" line="max_connections = 1000" state=present
+  notify: restart db
+  become: yes
+  tags: db
+
+- name: Copy pg_hba.conf
+  template:
+    src: templates/pg_hba.conf
+    dest: /etc/postgresql/10/main/pg_hba.conf
+  tags: db
+
 - name: Ensure the PostgreSQL service is running
   service:
     name: postgresql
@@ -55,4 +76,12 @@
     password: "{{ db_password }}"
     priv: "ALL"
     expires: infinity
+  tags: db
+  notify: restart db
+
+# just to be sure
+- name: Restart Postgres
+  service:
+    name: postgresql
+    state: restarted
   tags: db

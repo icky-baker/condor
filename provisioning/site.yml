@@ -13,7 +13,9 @@
       - setup
 
 - name: Database configuration
-  hosts: server1
+  hosts:
+    - server1
+#    - server2
   become: yes
   vars_files:
     - host_vars/main
