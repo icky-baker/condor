@@ -25,6 +25,7 @@ urlpatterns = [
 
 urlpatterns += [
     path("", include("catalog.urls")),
+    path("/", include("catalog.urls")),
 ]
 
 
