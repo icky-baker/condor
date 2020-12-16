@@ -3,7 +3,7 @@
 #
 - name: Print database location
   debug: msg="{{ db_host }}"
-  tags: web
+
 
 - name: Install python packages
   apt:
@@ -16,7 +16,7 @@
     - python3-pip
     - python3-dev
     - python-psycopg2
-  tags: web
+
 
 - name: Remove directory with source code
   file:
@@ -29,24 +29,24 @@
     dest: "{{ project_path }}"
 #    version: "{{ lookup('env', 'VERSION') }}" # NOTE: this env is linux env var
     version: master
-  tags: web
+
 
 - name: Copy env_settings
   template:
     src: templates/env_settings.py
     dest: "{{ django_dir }}/condor"
-  tags: web
+
 
 - name: Install python dependencies
   pip:
     requirements: /src/app/requirements.txt
-  tags: web
+
 
 - name: Collectstatic
   community.general.django_manage:
     command: "collectstatic"
     project_path: "{{ django_dir }}"
-  tags: web
+
 
 - name: Press any key to start migration
   pause:
@@ -57,7 +57,7 @@
   community.general.django_manage:
     command: "migrate"
     project_path: "{{ django_dir }}"
-  tags: web
+
 
 - name: Copy supervisor config
   template:
@@ -70,16 +70,15 @@
   file:
     path: /var/log/condor
     state: directory
-  tags: web
+
 
 - name: Make sure condor service exists in supervisor
   community.general.supervisorctl:
     name: condor
     state: present
-  tags: web
+
 
 - name: Restart condor service
   community.general.supervisorctl:
     name: condor
     state: restarted
-  tags: web

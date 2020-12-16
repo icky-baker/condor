@@ -10,6 +10,11 @@
     src: templates/haproxy.cfg
     dest: /etc/haproxy/haproxy.cfg
 
+#- name: Enable HAProxy
+#  template:
+#    src: templates/haproxy_default
+#    dest: /etc/default/haproxy
+
 - name: Restart service
   service:
     name: haproxy

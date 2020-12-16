@@ -9,6 +9,7 @@
   vars_files:
     - host_vars/main
 
+  tags: setup
   roles:
       - setup
 
@@ -23,6 +24,8 @@
   roles:
     - db
 
+  tags: db
+
 - name: Web configuration
   hosts:
     - server1
@@ -35,6 +38,7 @@
 
   roles:
     - web
+  tags: web
 
 - name: Load balancing configuration
   hosts:
@@ -59,5 +63,3 @@
 
   roles:
     - post_setup
-
-  tags: tmp
