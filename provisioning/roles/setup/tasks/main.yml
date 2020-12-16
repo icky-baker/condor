@@ -2,6 +2,14 @@
 # This playbook contains all actions that will be run on "local" host.
 
 # fix issue with date difference inside VM
+- name: Remove ntp
+  apt:
+    name: ntp
+    state: absent
+  become: yes
+  tags:
+    - setup
+
 - name: Install ntp
   apt:
     name: ntp

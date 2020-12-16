@@ -36,6 +36,19 @@
   roles:
     - web
 
+- name: Load balancing configuration
+  hosts:
+    - server2
+  become: yes
+  vars_files:
+    - host_vars/main
+
+  roles:
+    - load_balancing
+
+  tags: load_balancing
+
+
 - name: Post configuration
   hosts:
     - server1

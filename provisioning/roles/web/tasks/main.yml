@@ -48,6 +48,11 @@
     project_path: "{{ django_dir }}"
   tags: web
 
+- name: Press any key to start migration
+  pause:
+#    prompt: "Press any key to start migration"
+    seconds: 5
+
 - name: Migrate database
   community.general.django_manage:
     command: "migrate"

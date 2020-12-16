@@ -11,6 +11,7 @@
 
 
 - name: Soft link to postgres config folder
+  become: yes
   file:
     src: "/etc/postgresql/10/main"
     dest: "{{src_path}}/etc/postgresql/10/main"
@@ -18,7 +19,6 @@
 
 - name: Soft link to postgres data folder
   become: yes
-  become_user: postgres
   file:
     src: "/var/lib/postgresql/10/main"
     dest: "{{src_path}}/var/lib/postgresql/10/main"
