@@ -1,4 +1,3 @@
 # condor
-## jenkins please rabotay!!! :)
-
+## jenkins please rabotay!!!
 
