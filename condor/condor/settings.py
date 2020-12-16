@@ -88,6 +88,7 @@ DATABASES = {
         "PORT": "",
     }
 }
+USE_X_FORWARDED_HOST = True
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
