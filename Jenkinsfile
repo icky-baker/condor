@@ -2,7 +2,7 @@ pipeline {
    agent any
    stages {
       stage('Build') {
-        def tag = "v0.1"
+        //def tag = "v0.1"
         steps {
           echo 'Building...'
           sh ''' 
