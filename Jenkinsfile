@@ -2,11 +2,14 @@ pipeline {
    agent any
    stages {
       stage('Build') {
-        //def tag = "v0.1"
         steps {
           echo 'Building...'
           sh ''' 
           tag=$(git describe --tags)
+          if [ $tag == '' ] 
+          then 
+            tag="v0.1"
+          fi 
           echo $tag
           release=$(curl -XPOST --data "{\"tag_name\": \"$tag\", \"target_commitish\": \"master\", \"name\": \"test_release\", \"body\": \"description\", \"draft\": false, \"prerelease\": true}" https://api.github.com/icky-baker/condor/releases)
           echo Release $release is successfully released
