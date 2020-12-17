@@ -8,7 +8,7 @@ pipeline {
             createRelease(
             user: "trnsprntt",
             repository: "icky-baker/condor",
-#           tag: "${GIT_TAG_TO_USE}",
+//           tag: "${GIT_TAG_TO_USE}",
             name: "release lalala",
             description: "hop hey"
             )
