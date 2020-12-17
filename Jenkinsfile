@@ -2,9 +2,9 @@ pipeline {
    agent any
    stages {
       stage('Build') {
+        def tag = "v0.1"
         steps {
           echo 'Building...'
-          def tag = "v0.1"
           sh ''' 
           tag=$(git describe --tags)
           echo $tag
