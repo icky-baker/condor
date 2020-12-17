@@ -6,6 +6,7 @@ pipeline {
           echo 'Building...'
           sh ''' 
           tag=$(git describe --tags)
+          echo expr match "$tag" 'v[0-9][.][0-9]'
           if [ expr match "$tag" 'v[0-9][.][0-9]' ] 
           then 
             echo $tag
