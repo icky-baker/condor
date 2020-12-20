@@ -30,8 +30,8 @@ pipeline {
    stage('Test') {
      steps {
         echo 'Testing...'
-        sh 'make lint'
-        
+        sh 'make check'
+        sh './condor/manage.py test'
      }
    }
    stage('Deploy') {
