@@ -6,7 +6,7 @@
 base_python := python3
 python := python
 project_source_dir := condor
-
+py := python3 -m
 reports_dir := reports
 
 
