@@ -1,11 +1,5 @@
 pipeline {
-     agent {
-                docker {
-                    image 'python:3-alpine'
-                    label 'my-default-label'
-                     
-                }
-            }
+   agent any
    stages {
       stage('Build') {
         /*steps {
@@ -17,7 +11,13 @@ pipeline {
           echo Release $release is successfully released
           '''
         }*/
-       
+        agent {
+                docker {
+                    image 'python:3-alpine'
+                    label 'my-default-label'
+                     
+                }
+            }
                 
          steps {
             withEnv(["HOME=${env.WORKSPACE}"]) {
