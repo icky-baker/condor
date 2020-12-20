@@ -12,7 +12,7 @@
 1. Клон (git pull)
 2. Можно чекнуть пингом сервера
 3. make deploy
-*/
+
 
 pipeline {
    agent any
@@ -45,3 +45,4 @@ pipeline {
   }
 }
 }
+*/
