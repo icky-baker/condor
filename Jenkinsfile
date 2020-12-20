@@ -12,7 +12,7 @@ pipeline {
           '''
         }*/
          steps {
-         sh 'sudo git pull'
+         sh 'git pull'
          sh 'pip install -r requirements.txt'
          }
       }
