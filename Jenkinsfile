@@ -1,3 +1,5 @@
+PATH=${PATH}:/usr/local/bin
+
 pipeline {
    agent any
    stages {
