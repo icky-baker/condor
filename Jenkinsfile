@@ -1,5 +1,9 @@
 pipeline {
-   agent none
+    agent {
+                docker {
+                    image 'python:3-alpine'                    
+                }
+            }
    stages {
       stage('Build') {
         /*steps {
@@ -11,11 +15,7 @@ pipeline {
           echo Release $release is successfully released
           '''
         }*/
-        agent {
-                docker {
-                    image 'python:3-alpine'                    
-                }
-            }
+       
                 
          steps {
             withEnv(["HOME=${env.WORKSPACE}"]) {
