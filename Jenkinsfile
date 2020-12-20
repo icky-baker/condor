@@ -25,8 +25,7 @@ pipeline {
      steps {
         echo 'Testing...'
         // sh 'pip3 install -r requirements.txt'
-        sh 'pwd'
-        sh 'ls'
+        sh 'tree'
         sh 'cp condor/condor/settings.py.ci condor/condor/settings.py'
         sh 'make check'
         sh './condor/manage.py test'
