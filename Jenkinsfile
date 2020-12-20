@@ -13,9 +13,7 @@ pipeline {
         }*/
          steps {
          sh 'git branch'
-         sh 'cd /src/condor'
-         sh 'pwd'
-         sh 'git pull'
+         sh 'git pull master'
          sh 'pip install -r requirements.txt'       
          }
       }
