@@ -14,13 +14,11 @@ pipeline {
        
                 
          steps {
-            withEnv(["HOME=${env.WORKSPACE}"]) {
-         sh 'git branch'
-         sh 'git pull origin master'
-         sh 'pip install -r requirements.txt'
-         sh './condor/manage.py check'
+            sh 'git branch'
+            sh 'git pull origin master'
+            sh 'pip install -r requirements.txt'
+            sh './condor/manage.py check'
          }
-      }
       }
       
    stage('Test') {
