@@ -59,7 +59,7 @@ lint: isort black flake8
 
 .PHONY: check
 check:
-	$(py) isort --check $(project_source_dir) && $(py) black --check $(project_source_dir) && $(py) flake8 $(project_source_dir)
+	$(py) black --check $(project_source_dir) && $(py) isort --check $(project_source_dir) && $(py) flake8 $(project_source_dir)
 
 
 # =================================================================================================
