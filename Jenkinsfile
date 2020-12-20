@@ -13,9 +13,7 @@ pipeline {
         }*/
         agent {
                 docker {
-                    image 'python:3-alpine'
-                    label 'my-default-label'
-                     
+                    image 'python:3-alpine'                    
                 }
             }
                 
