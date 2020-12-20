@@ -12,6 +12,7 @@ pipeline {
           '''
         }*/
          steps {
+         sh 'git branch'
          sh 'git pull'
          sh 'pip install -r requirements.txt'
          }
