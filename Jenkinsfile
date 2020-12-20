@@ -24,6 +24,7 @@ pipeline {
    stage('Test') {
      steps {
         echo 'Testing...'
+        sh 'pip3 install -r requirements.txt'
         sh 'make check'
         sh './condor/manage.py test'
      }
