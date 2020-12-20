@@ -1,4 +1,5 @@
-import socket
+# import socket
+import os
 
 from catalog.models import Author, Book, BookInstance, Genre
 from django.shortcuts import render
@@ -18,7 +19,8 @@ def index(request):
     num_authors = Author.objects.count()
 
     context = {
-        "hostname": socket.gethostname(),
+        # "hostname": socket.gethostname(),
+        "hostname": os.popen("ip addr show enp0s3").read().split("inet ")[1].split("/")[0],
         "num_books": num_books,
         "num_instances": num_instances,
         "num_instances_available": num_instances_available,
