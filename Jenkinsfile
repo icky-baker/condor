@@ -34,6 +34,7 @@ pipeline {
    stage('Deploy') {
      steps {
        echo 'Deploying...'
+       sh 'ansible-galaxy collection install community.general'
        sh 'make deploy'
    }
   }
