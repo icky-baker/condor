@@ -1,5 +1,3 @@
-PATH=${PATH}:/usr/local/bin
-
 pipeline {
    agent any
    stages {
@@ -14,6 +12,7 @@ pipeline {
           '''
         }*/
          steps {
+         sh 'PATH=${PATH}:/usr/local/bin'
          sh 'git branch'
          sh 'git pull origin master'
          sh 'pip install -r requirements.txt'       
