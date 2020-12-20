@@ -1,4 +1,4 @@
 # condor
-## jenkins please rabotay!!!
+## our final sna project configuration
 
 
