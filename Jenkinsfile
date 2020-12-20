@@ -25,6 +25,7 @@ pipeline {
          sh './condor/manage.py test'
          }
       }
+      }
       
    stage('Test') {
      steps {
