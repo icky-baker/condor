@@ -22,7 +22,7 @@ pipeline {
          sh 'git branch'
          sh 'git pull origin master'
          sh 'pip install -r requirements.txt'
-         sh './condor/manage.py test'
+         sh './condor/manage.py check'
          }
       }
       }
