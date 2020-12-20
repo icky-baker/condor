@@ -16,7 +16,7 @@ pipeline {
          steps {
             sh 'git branch'
             sh 'git pull origin master'
-            sh 'pip install -r requirements.txt'
+            sh 'pip3 install -r requirements.txt'
             sh './condor/manage.py check'
          }
       }
