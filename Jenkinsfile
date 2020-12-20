@@ -12,10 +12,12 @@ pipeline {
           '''
         }*/
          steps {
+            withEnv(["HOME=${env.WORKSPACE}"]){
          sh 'PATH=${PATH}:/usr/local/bin'
          sh 'git branch'
          sh 'git pull origin master'
-         sh 'pip install -r requirements.txt'       
+         sh 'pip install -r requirements.txt' 
+            }
          }
       }
       
