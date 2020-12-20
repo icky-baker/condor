@@ -27,6 +27,7 @@ pipeline {
         // sh 'pip3 install -r requirements.txt'
         sh 'cp condor/condor/env_settings.py.ci condor/condor/env_settings.py'
         sh 'make check'
+        sh './condor/manage.py migrate'
         sh './condor/manage.py test'
      }
    }
