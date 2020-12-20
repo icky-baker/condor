@@ -1,5 +1,9 @@
 pipeline {
-   agent docker
+     agent {
+                docker {
+                    image 'python:3-alpine'
+                }
+            }
    stages {
       stage('Build') {
         /*steps {
@@ -11,12 +15,14 @@ pipeline {
           echo Release $release is successfully released
           '''
         }*/
+       
+                
          steps {
-            withEnv(["HOME=${env.WORKSPACE}"]){
+            withEnv(["HOME=${env.WORKSPACE}"]) {
          sh 'git branch'
          sh 'git pull origin master'
-         sh 'pip install -r requirements.txt' 
-            }
+         sh 'pip install -r requirements.txt'
+         sh './condor/manage.py test'
          }
       }
       
