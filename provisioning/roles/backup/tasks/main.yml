@@ -19,6 +19,18 @@
     - /bacula
     - /bacula-restore
 
+- name: Ensure no configuration files exist
+  become: yes
+  file:
+    path: "{{item}}"
+    state: absent
+  loop:
+      - /etc/bacula/bacula-dir.conf
+      - /etc/bacula/bacula-fd.conf
+      - /etc/bacula/bacula-sd.conf
+      - /etc/bacula/bconsole.conf
+      - /etc/postfix/main.cf
+
 - name: Copy bacula configuration files
   template:
     src: templates/backup_confs/"{{item}}"
