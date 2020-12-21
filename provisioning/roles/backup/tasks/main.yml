@@ -33,7 +33,7 @@
 
 - name: Copy bacula configuration files
   template:
-    src: templates/backup_confs/"{{item}}"
+    src: templates/"{{item}}"
     dest: /etc/bacula/"{{item}}"
 
   loop:
@@ -45,7 +45,7 @@
 
 - name: Copy postfix configuration files
   template:
-    src: templates/backup_confs/main.cf
+    src: templates/main.cf
     dest: /etc/postfix/main.cf
   become: yes
 
