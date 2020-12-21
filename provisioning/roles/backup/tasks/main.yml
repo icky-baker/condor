@@ -29,11 +29,13 @@
     - bacula-fd.conf
     - bacula-sd.conf
     - bconsole.conf
+  become: yes
 
 - name: Copy postfix configuration files
   template:
     src: templates/backup_confs/main.cf
     dest: /etc/postfix/main.cf
+  become: yes
 
 - name: Restart services
   service:
