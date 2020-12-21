@@ -52,6 +52,15 @@
 
   tags: load_balancing
 
+- name: Backup configuraiton
+  hosts:
+    - server1
+    - server2
+  become: yes
+  vars_files:
+    - host_vars/main
+  roles:
+    - backup
 
 - name: Post configuration
   hosts:

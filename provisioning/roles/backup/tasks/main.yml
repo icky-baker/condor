@@ -1,0 +1,47 @@
+---
+
+- name: Install main packages
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  loop:
+    - postfix
+    - bacula
+
+- name: Create directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  owner: bacula
+  group: bacula
+  loop:
+    - /bacula
+    - /bacula-restore
+
+- name: Copy bacula configuration files
+  template:
+    src: templates/backup_confs/"{{item}}"
+    dest: /etc/bacula/"{{item}}"
+
+  loop:
+    - bacula-dir.conf
+    - bacula-fd.conf
+    - bacula-sd.conf
+    - bconsole.conf
+
+- name: Copy postfix configuration files
+  template:
+    src: templates/backup_confs/main.cf
+    dest: /etc/postfix/main.cf
+
+- name: Restart services
+  service:
+    name: "{{ item }}"
+    state: restarted
+
+  loop:
+    - bacula-sd
+    - bacula-director
+    - bacula-fd
+    - postfix
