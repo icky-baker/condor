@@ -12,6 +12,7 @@ project_path: /src/app
 django_dir: /src/app/condor
 ip1: 192.168.0.183
 ip2: 192.168.0.122
+ip3: 192.168.0.117
 
 db_host: '{{ ip1 }}'
 load_balancing_host: '{{ ip2 }}'

@@ -5,6 +5,7 @@
   hosts:
     - server1
     - server2
+    - server3
   become: yes
   vars_files:
     - host_vars/main
@@ -30,6 +31,7 @@
   hosts:
     - server1
     - server2
+    - server3
   become: yes
   vars_files:
     - host_vars/main
@@ -67,6 +69,7 @@
   hosts:
     - server1
     - server2
+    - server3
   become: yes
   vars_files:
     - host_vars/main
