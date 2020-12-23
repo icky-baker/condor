@@ -1,2 +1,2 @@
 # condor
-## Our final sna project configuration :)
+## Our final sna project configuration :))
